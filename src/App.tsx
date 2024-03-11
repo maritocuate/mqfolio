@@ -1,9 +1,10 @@
 import './App.css'
+import MainScene from './components/MainScene'
 
 function App() {
   return (
     <>
-      <h1>mqfolio</h1>
+      <MainScene />
     </>
   )
 }
