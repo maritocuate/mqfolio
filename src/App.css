@@ -1,8 +1,15 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.caption {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 80px;
+  color: white;
+  font-size: 8em;
+  font-weight: 100;
+  line-height: 1em;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: auto;
 }
 
 .dot {
@@ -28,18 +35,4 @@
   line-height: 1em;
   margin: 0;
   margin-bottom: 0.25em;
-}
-
-.caption {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin: 80px;
-  color: white;
-  font-size: 8em;
-  font-weight: 100;
-  line-height: 1em;
-  font-variant-numeric: tabular-nums;
-  -webkit-font-smoothing: auto;
 }
