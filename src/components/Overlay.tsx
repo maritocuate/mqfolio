@@ -2,7 +2,7 @@ import { Ref, forwardRef, RefObject } from 'react'
 
 type OverlayProps = {
   caption: RefObject<HTMLSpanElement> | null
-  scroll: number | null
+  scroll: RefObject<number>
 }
 
 const Overlay = forwardRef(
@@ -17,7 +17,7 @@ const Overlay = forwardRef(
           const windowHeight = e.currentTarget.clientHeight
 
           const calculatedScroll = scrollTop / (scrollHeight - windowHeight)
-          scroll = calculatedScroll
+          scroll.current = calculatedScroll
 
           if (caption && caption.current) {
             caption.current.innerText = calculatedScroll.toFixed(2)
