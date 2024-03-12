@@ -12,7 +12,7 @@ export default function MainScene() {
       <Canvas shadows eventPrefix="client">
         <ambientLight intensity={1} />
       </Canvas>
-      <Overlay ref={overlay} caption={caption} scroll={scroll} />
+      <Overlay ref={overlay} caption={caption} scroll={scroll.current} />
     </>
   )
 }
