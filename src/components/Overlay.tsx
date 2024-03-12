@@ -2,30 +2,28 @@ import { Ref, forwardRef, RefObject } from 'react'
 
 type OverlayProps = {
   caption: RefObject<HTMLSpanElement> | null
-  scroll: RefObject<number | null> | null
+  scroll: number | null
 }
 
 const Overlay = forwardRef(
   ({ caption, scroll }: OverlayProps, ref: Ref<HTMLDivElement>) => (
     <div
+      className="scroll"
       ref={ref}
       onScroll={e => {
-        if (scroll && scroll.current !== null) {
+        if (scroll !== null) {
           const scrollTop = e.currentTarget.scrollTop
           const scrollHeight = e.currentTarget.scrollHeight
           const windowHeight = e.currentTarget.clientHeight
 
           const calculatedScroll = scrollTop / (scrollHeight - windowHeight)
-          if (scroll.current !== null) {
-            scroll.current = calculatedScroll
+          scroll = calculatedScroll
 
-            if (caption && caption.current) {
-              caption.current.innerText = calculatedScroll.toFixed(2)
-            }
+          if (caption && caption.current) {
+            caption.current.innerText = calculatedScroll.toFixed(2)
           }
         }
       }}
-      className="scroll"
     >
       <div style={{ height: '400vh' }}>
         <div className="dot">
