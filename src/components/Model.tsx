@@ -33,22 +33,27 @@ export default function Model({ scroll }: ModelProps) {
   }, [hovered]) */
 
   useFrame(state => {
-    console.log(scroll)
     if (actions && actions['CameraAction.005'] && group.current) {
+      const actionTime = actions['CameraAction.005'].time //0
+      const actionDuration = actions['CameraAction.005'].getClip().duration //5.8
+
       actions['CameraAction.005'].time = THREE.MathUtils.lerp(
-        actions['CameraAction.005'].time,
-        actions['CameraAction.005'].getClip().duration * scroll.current,
+        actionTime,
+        actionDuration * scroll.current,
         0.05
       )
+
+      console.log(actions['CameraAction.005'].time)
+
       group.current.children[0].children.forEach((child, index) => {
         child.material.color.lerp(
           color.set(hovered === child.name ? 'tomato' : '#202020'),
           hovered ? 0.1 : 0.05
         )
         const et = state.clock.elapsedTime
-        child.position.y = Math.sin((et + index * 2000) / 2) * 1
-        child.rotation.x = Math.sin((et + index * 2000) / 3) / 10
-        child.rotation.y = Math.cos((et + index * 2000) / 2) / 10
+        //child.position.y = Math.sin((et + index * 2000) / 2) * 1
+        //child.rotation.x = Math.sin((et + index * 2000) / 3) / 10
+        //child.rotation.y = Math.cos((et + index * 2000) / 2) / 10
         child.rotation.z = Math.sin((et + index * 2000) / 3) / 10
       })
     }
@@ -98,11 +103,14 @@ export default function Model({ scroll }: ModelProps) {
           material={materials.M_Headset}
           {...extras}
         />
+
         <mesh
-          name="Zeppelin"
-          geometry={nodes.Zeppelin.geometry}
-          material={materials.M_Zeppelin}
-          v
+          name="Glasses"
+          geometry={nodes.Glasses.geometry}
+          position={[-60, 40, 46]}
+          rotation={[-8, 0, 0]}
+          material={materials.M_Headset}
+          {...extras}
         />
       </group>
       <group
