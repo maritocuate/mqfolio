@@ -1,19 +1,22 @@
 import * as THREE from 'three'
-import { useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef } from 'react'
 import { useGLTF, useAnimations, PerspectiveCamera } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
 type ModelProps = {
-  scroll: number | null
+  scroll: RefObject<number>
 }
 
 const color = new THREE.Color()
 
 export default function Model({ scroll }: ModelProps) {
   const group = useRef<THREE.Group>(null)
-  const { nodes, materials, animations } = useGLTF('/model.glb')
-  const { actions } = useAnimations<THREE.AnimationClip>(animations, group)
-  const [hovered, set] = useState()
+  const model = useGLTF('/model.glb')
+  const { actions } = useAnimations<THREE.AnimationClip>(
+    model.animations,
+    group
+  )
+
   const extras = {
     receiveShadow: true,
     castShadow: true,
@@ -26,34 +29,23 @@ export default function Model({ scroll }: ModelProps) {
     }
   }, [actions])
 
-  /* useEffect(() => {
-    if (hovered)
-      group.current.getObjectByName(hovered).material.color.set('white')
-    document.body.style.cursor = hovered ? 'pointer' : 'auto'
-  }, [hovered]) */
-
   useFrame(state => {
-    let actionsCam = actions['CameraAction.005']
     if (actions && actions['CameraAction.005'] && group.current) {
-      const actionTime = actionsCam.time //0
-      const actionDuration = actionsCam.getClip().duration //5.8
-      const scrollValue = 1 - scroll.current
+      const actionTime = actions['CameraAction.005'].time //0
+      const actionDuration = actions['CameraAction.005'].getClip().duration //5.8
 
-      actionsCam.time = THREE.MathUtils.lerp(
-        actionDuration * scrollValue,
-        actionTime,
-        0.05
-      )
-
-      group.current.children[0].children.forEach((child, index) => {
-        child.material.color.lerp(
-          color.set(hovered === child.name ? 'tomato' : '#202020'),
-          hovered ? 0.1 : 0.05
+      if (scroll.current !== null) {
+        const scrollValue = 1 - scroll.current
+        actions['CameraAction.005'].time = THREE.MathUtils.lerp(
+          actionDuration * scrollValue,
+          actionTime,
+          0.05
         )
+      }
+
+      group.current.children[0].children.forEach((child: any, index) => {
+        child.material.color.lerp(color.set(0.1), 0.05)
         const et = state.clock.elapsedTime
-        //child.position.y = Math.sin((et + index * 2000) / 2) * 1
-        //child.rotation.x = Math.sin((et + index * 2000) / 3) / 10
-        //child.rotation.y = Math.cos((et + index * 2000) / 2) / 10
         child.rotation.z = Math.sin((et + index * 2000) / 3) / 50
       })
     }
@@ -61,30 +53,24 @@ export default function Model({ scroll }: ModelProps) {
 
   return (
     <group ref={group} dispose={null}>
-      <group
-        onPointerOver={e => (e.stopPropagation(), set(e.object.name))}
-        onPointerOut={e => (e.stopPropagation(), set(null))}
-        position={[0.06, 4.04, 0.35]}
-        scale={[0.25, 0.25, 0.25]}
-      >
+      <group position={[0.06, 4.04, 0.35]} scale={[0.25, 0.25, 0.25]}>
         <mesh
           name="Glasses"
-          geometry={nodes.Glasses.geometry}
+          geometry={(model.nodes.Glasses as any).geometry}
           position={[-60, 40, 46]}
           rotation={[-8, 0, 0]}
-          material={materials.M_Headset}
-          {...extras}
+          material={model.materials.M_Headset}
         />
         <mesh
           name="Notebook"
-          geometry={nodes.Notebook.geometry}
-          material={materials.M_Notebook}
+          geometry={(model.nodes.Notebook as any).geometry}
+          material={model.materials.M_Notebook}
           position={[30, -12, -25]}
         />
         <mesh
           name="Joystick"
-          geometry={nodes.Joystick.geometry}
-          material={materials.M_Table}
+          geometry={(model.nodes.Joystick as any).geometry}
+          material={model.materials.M_Table}
           position={[45, 5, 2]}
           rotation={[0.1, 2.5, 0]}
           scale={90}

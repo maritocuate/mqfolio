@@ -1,7 +1,7 @@
-import { Ref, forwardRef, RefObject } from 'react'
+import { Ref, forwardRef } from 'react'
 
 type OverlayProps = {
-  scroll: RefObject<number>
+  scroll: { current: number }
 }
 
 const Overlay = forwardRef(
