@@ -60,12 +60,14 @@ export default function Model({ scroll }: ModelProps) {
           position={[-60, 40, 46]}
           rotation={[-8, 0, 0]}
           material={model.materials.M_Headset}
+          {...extras}
         />
         <mesh
           name="Notebook"
           geometry={(model.nodes.Notebook as any).geometry}
           material={model.materials.M_Notebook}
           position={[30, -12, -25]}
+          {...extras}
         />
         <mesh
           name="Joystick"
@@ -74,6 +76,7 @@ export default function Model({ scroll }: ModelProps) {
           position={[45, 5, 2]}
           rotation={[0.1, 2.5, 0]}
           scale={90}
+          {...extras}
         />
       </group>
       <group
