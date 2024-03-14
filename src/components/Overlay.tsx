@@ -1,4 +1,5 @@
 import { Ref, forwardRef } from 'react'
+import Portfolio from './Portfolio'
 
 type OverlayProps = {
   scroll: { current: number }
@@ -56,8 +57,9 @@ const Overlay = forwardRef(
         </div>
       </div>
       <div style={{ height: '100vh' }} className="final">
-        <div className="dot">
-          <h1>Portfolio</h1>Some projects
+        <div className="dot portfolio">
+          <h1>Portfolio</h1>
+          <Portfolio />
         </div>
       </div>
     </div>

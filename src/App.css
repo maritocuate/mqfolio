@@ -40,3 +40,35 @@
   margin: 0;
   margin-bottom: 0.25em;
 }
+
+.dot.portfolio {
+  max-width: 100%;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 2fr);
+  grid-gap: 15px;
+}
+
+.gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  filter: grayscale(50%);
+
+  border: 1px solid #656565;
+  padding: 4px;
+  background-color: #ababab;
+}
+
+.gallery__text {
+  text-transform: uppercase;
+  position: relative;
+  bottom: 32px;
+  left: 10px;
+  text-shadow: 1px 1px black;
+  font-weight: bolder;
+  color: white;
+}
