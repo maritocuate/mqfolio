@@ -36,7 +36,7 @@ body {
   top: 0;
   left: 0;
   overflow-y: auto;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
 }
 
 .scroll > div {

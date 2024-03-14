@@ -48,13 +48,13 @@ export default function Model({ scroll }: ModelProps) {
       group.current.children[0].children.forEach((child, index) => {
         child.material.color.lerp(
           color.set(hovered === child.name ? 'tomato' : '#202020'),
-          hovered ? 0.3 : 0.05
+          hovered ? 0.1 : 0.05
         )
         const et = state.clock.elapsedTime
         //child.position.y = Math.sin((et + index * 2000) / 2) * 1
         //child.rotation.x = Math.sin((et + index * 2000) / 3) / 10
         //child.rotation.y = Math.cos((et + index * 2000) / 2) / 10
-        child.rotation.z = Math.sin((et + index * 2000) / 3) / 10
+        child.rotation.z = Math.sin((et + index * 2000) / 3) / 50
       })
     }
   })
@@ -68,49 +68,26 @@ export default function Model({ scroll }: ModelProps) {
         scale={[0.25, 0.25, 0.25]}
       >
         <mesh
-          name="Headphones"
-          geometry={nodes.Headphones.geometry}
-          material={materials.M_Headphone}
-          {...extras}
-        />
-        <mesh
-          name="Notebook"
-          geometry={nodes.Notebook.geometry}
-          material={materials.M_Notebook}
-          {...extras}
-        />
-        <mesh
-          name="Rocket003"
-          geometry={nodes.Rocket003.geometry}
-          material={materials.M_Rocket}
-          {...extras}
-        />
-        <mesh
-          name="Roundcube001"
-          geometry={nodes.Roundcube001.geometry}
-          material={materials.M_Roundcube}
-          {...extras}
-        />
-        <mesh
-          name="Table"
-          geometry={nodes.Table.geometry}
-          material={materials.M_Table}
-          {...extras}
-        />
-        <mesh
-          name="VR_Headset"
-          geometry={nodes.VR_Headset.geometry}
-          material={materials.M_Headset}
-          {...extras}
-        />
-
-        <mesh
           name="Glasses"
           geometry={nodes.Glasses.geometry}
           position={[-60, 40, 46]}
           rotation={[-8, 0, 0]}
           material={materials.M_Headset}
           {...extras}
+        />
+        <mesh
+          name="Notebook"
+          geometry={nodes.Notebook.geometry}
+          material={materials.M_Notebook}
+          position={[30, -12, -25]}
+        />
+        <mesh
+          name="Joystick"
+          geometry={nodes.Joystick.geometry}
+          material={materials.M_Table}
+          position={[45, 5, 2]}
+          rotation={[0.1, 2.5, 0]}
+          scale={90}
         />
       </group>
       <group

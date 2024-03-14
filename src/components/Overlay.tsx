@@ -27,61 +27,42 @@ const Overlay = forwardRef(
     >
       <div style={{ height: '200vh' }}>
         <div className="dot">
-          <h1>headset</h1>
-          Virtual reality (VR) is a simulated experience that can be similar to
-          or completely different from the real world.
+          <h1>About Me</h1>
+          Hi, my name is <strong>Mario</strong>! Im 37 years old, I live in
+          Buenos Aires and Im a web developer. Besides programming I like
+          reading science fiction and playing Xbox (PES and Civilization more
+          than anything else).
+          <br />I love technology and challenging projects.
         </div>
       </div>
       <div style={{ height: '200vh' }}>
         <div className="dot">
-          <h1>headphone</h1>
-          Headphones are a pair of small loudspeaker drivers worn on or around
-          the head over a user's ears.
+          <h1>Tech Stack</h1>The last few years I working with{' '}
+          <strong>React</strong> using design patterns (HOC, Presentational,
+          Provider, Compound, etc). I prefer Jest for unit testing, and I also
+          use Cypress for end-to-end testing. For some projects where I need to
+          work server-side I use <strong>Next 14</strong> (TypeScript) with
+          Prisma for the NoSQL databases (<strong>MongoDB</strong>). Through the
+          years I acquired strong understanding of vanilla JavaScript and
+          general knowledge in popular libraries like jQuery, GSAP, TailwindCSS,
+          etc. I have experience with source control using Git and SVN. Familiar
+          with NodeJS and Express. Although I mostly use Django.
         </div>
       </div>
       <div style={{ height: '200vh' }}>
         <div className="dot">
-          <h1>rocket</h1>A rocket (from Italian: rocchetto,
-          lit. 'bobbin/spool')[nb 1][1] is a projectile that spacecraft,
-          aircraft or other vehicle use to obtain thrust from a rocket engine.
+          <h1>Moreover...</h1>I am not an expert but I also model in{' '}
+          <strong>Blender</strong> to use it with <strong>ThreeJs</strong> more
+          than anything else. Using physics with <strong>MatterJs</strong> I
+          also like a lot.
+          <br />
+          My second language could be <strong>Python</strong> as it is essential
+          for Tensorflow and Machine Learning.
         </div>
       </div>
-      <div style={{ height: '200vh' }}>
+      <div style={{ height: '100vh' }} className="final">
         <div className="dot">
-          <h1>turbine</h1>A turbine (/ˈtɜːrbaɪn/ or /ˈtɜːrbɪn/) (from the Greek
-          τύρβη, tyrbē, or Latin turbo, meaning vortex)[1][2] is a rotary
-          mechanical device that extracts energy from a fluid flow and converts
-          it into useful work.
-        </div>
-      </div>
-      <div style={{ height: '200vh' }}>
-        <div className="dot">
-          <h1>table</h1>A table is an item of furniture with a flat top and one
-          or more legs, used as a surface for working at, eating from or on
-          which to place things.[1][2]
-        </div>
-      </div>
-      <div style={{ height: '200vh' }}>
-        <div className="dot">
-          <h1>laptop</h1>A laptop, laptop computer, or notebook computer is a
-          small, portable personal computer (PC) with a screen and alphanumeric
-          keyboard.
-        </div>
-      </div>
-      <div style={{ height: '200vh' }}>
-        <div className="dot">
-          <h1>zeppelin</h1>A Zeppelin is a type of rigid airship named after the
-          German inventor Count Ferdinand von Zeppelin (German pronunciation:
-          [ˈt͡sɛpəliːn]) who pioneered rigid airship development at the beginning
-          of the 20th century.
-        </div>
-      </div>
-      <div style={{ height: '200vh' }} className="final">
-        <div className="dot">
-          <h1>Portfolio</h1>A Zeppelin is a type of rigid airship named after
-          the German inventor Count Ferdinand von Zeppelin (German
-          pronunciation: [ˈt͡sɛpəliːn]) who pioneered rigid airship development
-          at the beginning of the 20th century.
+          <h1>Portfolio</h1>Some projects
         </div>
       </div>
       <span className="caption" ref={caption}>
