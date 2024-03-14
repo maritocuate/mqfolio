@@ -25,7 +25,7 @@ const Overlay = forwardRef(
         }
       }}
     >
-      <div style={{ height: '400vh' }}>
+      <div style={{ height: '200vh' }}>
         <div className="dot">
           <h1>headset</h1>
           Virtual reality (VR) is a simulated experience that can be similar to
@@ -74,6 +74,14 @@ const Overlay = forwardRef(
           German inventor Count Ferdinand von Zeppelin (German pronunciation:
           [ˈt͡sɛpəliːn]) who pioneered rigid airship development at the beginning
           of the 20th century.
+        </div>
+      </div>
+      <div style={{ height: '200vh' }} className="final">
+        <div className="dot">
+          <h1>Portfolio</h1>A Zeppelin is a type of rigid airship named after
+          the German inventor Count Ferdinand von Zeppelin (German
+          pronunciation: [ˈt͡sɛpəliːn]) who pioneered rigid airship development
+          at the beginning of the 20th century.
         </div>
       </div>
       <span className="caption" ref={caption}>

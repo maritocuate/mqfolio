@@ -26,6 +26,10 @@
   letter-spacing: 1.5px;
 }
 
+.final {
+  background-color: grey;
+}
+
 .dot > h1 {
   -webkit-font-smoothing: auto;
   pointer-events: none;

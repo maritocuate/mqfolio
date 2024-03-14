@@ -33,22 +33,22 @@ export default function Model({ scroll }: ModelProps) {
   }, [hovered]) */
 
   useFrame(state => {
+    let actionsCam = actions['CameraAction.005']
     if (actions && actions['CameraAction.005'] && group.current) {
-      const actionTime = actions['CameraAction.005'].time //0
-      const actionDuration = actions['CameraAction.005'].getClip().duration //5.8
+      const actionTime = actionsCam.time //0
+      const actionDuration = actionsCam.getClip().duration //5.8
+      const scrollValue = 1 - scroll.current
 
-      actions['CameraAction.005'].time = THREE.MathUtils.lerp(
+      actionsCam.time = THREE.MathUtils.lerp(
+        actionDuration * scrollValue,
         actionTime,
-        actionDuration * scroll.current,
         0.05
       )
-
-      console.log(actions['CameraAction.005'].time)
 
       group.current.children[0].children.forEach((child, index) => {
         child.material.color.lerp(
           color.set(hovered === child.name ? 'tomato' : '#202020'),
-          hovered ? 0.1 : 0.05
+          hovered ? 0.3 : 0.05
         )
         const et = state.clock.elapsedTime
         //child.position.y = Math.sin((et + index * 2000) / 2) * 1
