@@ -1,12 +1,11 @@
 import { Ref, forwardRef, RefObject } from 'react'
 
 type OverlayProps = {
-  caption: RefObject<HTMLSpanElement> | null
   scroll: RefObject<number>
 }
 
 const Overlay = forwardRef(
-  ({ caption, scroll }: OverlayProps, ref: Ref<HTMLDivElement>) => (
+  ({ scroll }: OverlayProps, ref: Ref<HTMLDivElement>) => (
     <div
       className="scroll"
       ref={ref}
@@ -18,10 +17,6 @@ const Overlay = forwardRef(
 
           const calculatedScroll = scrollTop / (scrollHeight - windowHeight)
           scroll.current = calculatedScroll
-
-          if (caption && caption.current) {
-            caption.current.innerText = calculatedScroll.toFixed(2)
-          }
         }
       }}
     >
@@ -65,9 +60,6 @@ const Overlay = forwardRef(
           <h1>Portfolio</h1>Some projects
         </div>
       </div>
-      <span className="caption" ref={caption}>
-        0.00
-      </span>
     </div>
   )
 )

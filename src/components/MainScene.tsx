@@ -6,7 +6,6 @@ import Model from './Model'
 
 export default function MainScene() {
   const overlay = useRef<HTMLDivElement | null>(null)
-  const caption = useRef<HTMLSpanElement | null>(null)
   const scroll = useRef<number>(0)
 
   return (
@@ -19,7 +18,7 @@ export default function MainScene() {
         </Suspense>
       </Canvas>
 
-      <Overlay ref={overlay} caption={caption} scroll={scroll} />
+      <Overlay ref={overlay} scroll={scroll} />
     </>
   )
 }
